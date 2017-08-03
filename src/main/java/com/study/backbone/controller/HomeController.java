@@ -16,7 +16,7 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        return "/home/home";
+        return "/study/study";
     }
 
     @GetMapping("/articles")
@@ -28,5 +28,6 @@ public class HomeController {
     public String articlesForm(Model model) {
         return "/article/form";
     }
+
 
 }
