@@ -5,21 +5,26 @@
 </head>
 <body>
 
-<div id="user">
-    <div id="addUser">
-        <label for="name">name: </label><input id="name" type="text" />
-        <button id="add">Add</button>
+<div id="main">
+
+    <div id="search">
+        <label for="name">Google : </label><input id="name" type="text" />
+        <button id="search">Search</button>
     </div>
 
-    <script id="userTemplate" type="text/template">
-        <ul>
-            <li><%= name %></li>
-        </ul>
-        <button class="delete">Delete</button>
-    </script>
+    <div id="history">
+
+    </div>
 </div>
+
+
 
 <script src="/dist/common.js"></script>
 <script src="/dist/app.js"></script>
 </body>
 </html>
+
+<script id="searchHistoryTemplate" type="text/template">
+    <label><%= name %></label>
+    <button class="delete">Delete</button>
+</script>

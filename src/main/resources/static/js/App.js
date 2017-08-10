@@ -1,3 +1,5 @@
 
 import AddUserView from "./views/AddUserView";
-var ridesView = new AddUserView();
+import MainView from "./views/main/MainView";
+//var ridesView = new AddUserView();
+new MainView();

@@ -6,6 +6,7 @@ export default Backbone.View.extend({
     el: $("#user"),
 
     initialize: function(){
+        console.log("Add User view init");
         this.collection = new UserCollection();
         this.render();
         // 컬렉션 add가 호출되면 renderUser를 trigger 한다
