@@ -8,7 +8,8 @@
 <div id="main">
 
     <div id="search">
-        <label for="name">Google : </label><input id="name" type="text" />
+        <label>Google : </label>
+        <input id="content" type="text" />
         <button id="search">Search</button>
     </div>
 

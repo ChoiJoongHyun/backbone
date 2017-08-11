@@ -1,22 +1,16 @@
 import SearchView from './SearchView';
-
+import HistoryView from './HistoryView';
 export default Backbone.View.extend({
-
-
     el: $("#main"),
 
     initialize: function(){
         console.log("Main view init");
-        //this.render();
-    },
 
-    search: function(e){
-        e.preventDefault();
-        console.log("search gogo");
-    },
+        let searchView = new SearchView();
+        let historyView = new HistoryView();
 
-    render:function () {
-        console.log("render gogo");
-        return this;
+        console.log(searchView.el);
+        console.log(historyView.el);
     }
 });
+
