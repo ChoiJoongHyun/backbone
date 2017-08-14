@@ -31,7 +31,8 @@ public class SearchControllerTest {
     @Test
     public void articlesForm() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
-                .get("/search/hiyo")
+                .get("/search")
+                .param("q", "hiyoyoyo")
         ).andDo(print())
                 .andExpect(status().isOk())
                 .andReturn();
