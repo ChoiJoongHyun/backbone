@@ -1,5 +1,5 @@
 import SearchView from './SearchView';
-import HistoryView from './HistoryView';
+import ListView from './ListView';
 export default Backbone.View.extend({
     el: $("#main"),
 
@@ -7,10 +7,10 @@ export default Backbone.View.extend({
         console.log("Main view init");
 
         let searchView = new SearchView();
-        let historyView = new HistoryView();
+        let listView = new ListView();
 
         console.log(searchView.el);
-        console.log(historyView.el);
+        console.log(listView.el);
     }
 });
 

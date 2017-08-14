@@ -1,5 +1,6 @@
 import SearchModel from '../../models/main/SearchModel';
-
+import SearchCollection from '../../collections/main/SearchCollection';
+import ListView from './ListView';
 export default Backbone.View.extend({
 
     el: $("#search"),
@@ -10,38 +11,24 @@ export default Backbone.View.extend({
 
     initialize: function(){
         console.log("SearchView view init");
-        this.model = new SearchModel();
+        this.collection = new SearchCollection();
+        this.listenTo(this.collection, 'sync', this.render);
+        this.listView = new ListView();
+
         this.render();
-        this.listenTo(this.model, 'change', this.render);
     },
 
     search: function(e){
         e.preventDefault();
-
-
         let content = this.$('#content').val();
-
         console.log("search content : " + content);
-
-        this.model.fetch({ data: { q: content} });
-
-        //let model = new SearchModel({id:"hihihi"});
-
-        //this.listenToOnce(model, 'change', this.fetch);
-        //this.model.fetch();
-
-        //this.model.fetch({id : "hihihi"});
-        //this.model.save({id : "hihihi"});
-        //this.model.fetch({id : "hihihi"});
-        //this.model.save({id : "hihihi"});
-        //this.model.
-        //this.model({id:"hihi"}).fetch();
+        this.collection.fetch({ data: { q: content} });
     },
 
     render:function () {
         console.log("render gogo");
-        //this.$el.html(this.model.toJSON());
-
+        console.log("search content : " + this.collection.length);
+        this.$el.append(this.listView.render(this.collection).el);
         return this;
     }
 });

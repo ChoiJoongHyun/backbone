@@ -13,7 +13,7 @@
         <button id="search">Search</button>
     </div>
 
-    <div id="history">
+    <div id="list">
 
     </div>
 </div>
