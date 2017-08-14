@@ -28,12 +28,12 @@ public class SearchController {
         Random random = new Random();
 
         List<SearchList> list = Arrays.asList(
-                new SearchList("제목", random.nextInt(MAX_NUM))
-                ,new SearchList("제목", random.nextInt(MAX_NUM))
-                ,new SearchList("제목", random.nextInt(MAX_NUM))
-                ,new SearchList("제목", random.nextInt(MAX_NUM))
-                ,new SearchList("제목", random.nextInt(MAX_NUM))
-                ,new SearchList("제목", random.nextInt(MAX_NUM))
+                new SearchList(1,"제목1", random.nextInt(MAX_NUM))
+                ,new SearchList(2,"제목2", random.nextInt(MAX_NUM))
+                ,new SearchList(3,"제목3", random.nextInt(MAX_NUM))
+                ,new SearchList(4,"제목4", random.nextInt(MAX_NUM))
+                ,new SearchList(5,"제목5", random.nextInt(MAX_NUM))
+                ,new SearchList(6,"제목6", random.nextInt(MAX_NUM))
         );
 
         return list;
@@ -41,10 +41,12 @@ public class SearchController {
 
     @Data
     public static class SearchList {
+        int idx;
         String title;
         Object content;
 
-        public SearchList(String title, Object content) {
+        public SearchList(int idx, String title, Object content) {
+            this.idx = idx;
             this.title = title;
             this.content = content;
         }

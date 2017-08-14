@@ -1,28 +1,44 @@
 import SearchModel from '../../models/main/SearchModel';
 import SearchCollection from '../../collections/main/SearchCollection';
 import ListView from './ListView';
+import HistoryView from './HistoryView';
+import HistoryAddView from './HistoryAddView';
+import HistoryCollection from '../../collections/main/HistoryCollection';
+import HistoryModel from '../../models/main/HistoryModel';
 export default Backbone.View.extend({
 
     el: $("#search"),
 
     events:{
         "click #search": "search"
+
     },
 
     initialize: function(){
         console.log("SearchView view init");
         this.collection = new SearchCollection();
+
         this.listenTo(this.collection, 'sync', this.render);
+
         this.listView = new ListView();
+        this.historyView = new HistoryView();
 
         this.render();
     },
 
+
     search: function(e){
         e.preventDefault();
         let content = this.$('#content').val();
+
+        if(content === '') {
+            return;
+        }
+
         console.log("search content : " + content);
         this.collection.fetch({ data: { q: content} });
+
+        this.historyView.addHistory(new HistoryModel({content: content, date: new Date()}));
     },
 
     render:function () {

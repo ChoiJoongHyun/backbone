@@ -16,6 +16,10 @@
     <div id="list">
 
     </div>
+
+    <div id="history">
+
+    </div>
 </div>
 
 

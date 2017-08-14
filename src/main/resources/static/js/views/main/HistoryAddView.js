@@ -1,5 +1,6 @@
 import HistoryTemplate from '../../../../templates/main/historyTemplate.hbs'
 import HistoryCollection from '../../collections/main/HistoryCollection'
+import HistoryView from './HistoryView'
 export default Backbone.View.extend({
 
     el: $("#history"),
@@ -20,19 +21,8 @@ export default Backbone.View.extend({
     addHistory:function (model) {
         console.log("addHistory");
         this.collection.add(model);
-        //let historyView = new HistoryView(model);
-        this.$el.append(this.template(model));
-    },
-
-    events:{
-        "click #historyDelBtn": "historyDelBtn"
-    },
-
-    historyDelBtn:function () {
-        console.log("historyDelBtn");
-        this.collection.remove();
+        let historyView = new HistoryView(model);
+        this.$el.append(historyView.render().el);
     }
-
-
 });
 
