@@ -27,7 +27,8 @@ const config = {
             jQuery : "jquery",
             Backbone : "backbone",
             _ : "underscore",
-            Handlebars: "handlebars"
+            Handlebars: "handlebars",
+            moment : "moment"
         }),
         new CommonsChunkPlugin({
             name: "common",

@@ -1,38 +1,34 @@
 import HistoryTemplate from '../../../../templates/main/historyTemplate.hbs'
 import HistoryCollection from '../../collections/main/HistoryCollection'
+import HistoryAddView from './HistoryAddView'
 export default Backbone.View.extend({
 
     el: $("#history"),
 
     initialize: function(){
-        console.log("History view init");
+        console.log("HistoryView init");
         this.template = HistoryTemplate;
         this.collection = new HistoryCollection();
-//        this.listenTo(this.collection, 'add', this.render);
+        this.listenTo(this.collection, 'add', this.renderHistory);
     },
 
     render:function () {
-        console.log("History render");
+        console.log("HistoryView render");
         //this.$el.append(this.template());
-        return;
+        return this;
     },
 
     addHistory:function (model) {
-        console.log("addHistory");
+        console.log("HistoryView addHistory");
         this.collection.add(model);
-        //let historyView = new HistoryView(model);
-        this.$el.append(this.template(model));
     },
 
-    events:{
-        "click #historyDelBtn": "historyDelBtn"
-    },
-
-    historyDelBtn:function () {
-        console.log("historyDelBtn");
-        this.collection.remove();
+    renderHistory:function (model) {
+        console.log("HistoryView renderHistory");
+        let historyAddView = new HistoryAddView({
+            model: model
+        });
+        this.$el.append( historyAddView.render().el );
     }
-
-
 });
 

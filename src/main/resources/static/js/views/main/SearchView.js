@@ -38,7 +38,12 @@ export default Backbone.View.extend({
         console.log("search content : " + content);
         this.collection.fetch({ data: { q: content} });
 
-        this.historyView.addHistory(new HistoryModel({content: content, date: new Date()}));
+
+        var yyyymmdd = moment().format('YYYY-MM-DD hh:mm:ss')
+
+        this.historyView.addHistory(new HistoryModel({
+            content: content,
+            date: yyyymmdd}));
     },
 
     render:function () {

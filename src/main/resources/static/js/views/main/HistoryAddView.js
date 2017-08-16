@@ -3,26 +3,28 @@ import HistoryCollection from '../../collections/main/HistoryCollection'
 import HistoryView from './HistoryView'
 export default Backbone.View.extend({
 
-    el: $("#history"),
+
+    events: {
+        'click #historyDelBtn': 'deleteHistory'
+    },
 
     initialize: function(){
-        console.log("History view init");
+        console.log("HistoryAddView view init");
         this.template = HistoryTemplate;
-        this.collection = new HistoryCollection();
-//        this.listenTo(this.collection, 'add', this.render);
     },
 
     render:function () {
-        console.log("History render");
-        //this.$el.append(this.template());
-        return;
-    },
+        console.log("HistoryAddView render" );
+        let jh = this.model.toJSON();
 
-    addHistory:function (model) {
-        console.log("addHistory");
-        this.collection.add(model);
-        let historyView = new HistoryView(model);
-        this.$el.append(historyView.render().el);
+        this.$el.html(this.template(this.model.toJSON()));
+
+        return this;
+    },
+    
+    deleteHistory:function () {
+        this.model.destroy();
+        this.remove();
     }
 });
 
